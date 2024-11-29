@@ -1,0 +1,56 @@
+<table mat-table [dataSource]="userList" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->  
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="FirstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let data"> {{data.firstName}} </td>
+    </ng-container>
+  
+    <!-- LastName Column -->
+    <ng-container matColumnDef="LastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let data"> {{data.lastName}} </td>
+    </ng-container>
+  
+    <!-- Phone Number Column -->
+    <ng-container matColumnDef="Phone Number">
+      <th mat-header-cell *matHeaderCellDef> Phone Number  </th>
+      <td mat-cell *matCellDef="let data"> {{data.phoneNumber}} </td>
+    </ng-container>
+  
+    <!-- Email Column -->
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let data"> {{data.email}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let data"> 
+            <!-- in this i have used angular 3 dot icon button  -->
+            <div class="example-button-row">
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="openDialog(data)">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>   
+            <!-- in this i have used angular delete icon button  -->
+            <div class="example-button-container">
+                <button mat-icon-button aria-label="Example icon button with a delete icon" 
+                [swal]="{title: 'Confirmation',
+                text: 'Are you Sure you want to delete this record?',
+                showCancelButton: true 
+                }"
+                (confirm)="onDelete(data)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+            </div> 
+        </td>
+    </ng-container>  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+  

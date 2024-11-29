@@ -1,0 +1,56 @@
+
+<form [formGroup]="userGroup">
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Eg: Ali" formControlName="firstName" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (userGroup.get('firstName')?.hasError('required') && !userGroup.get('firstName')?.hasError('minlength') ) {
+      <mat-error>FirstName is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (userGroup.get('firstName')?.hasError('minlength')) {
+      <mat-error>FirstName length should be minimum <strong>3</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Eg: Shaikh" formControlName="lastName" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (userGroup.get('lastName')?.hasError('required') && !userGroup.get('lastName')?.hasError('minlength') ) {
+      <mat-error>LastName is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (userGroup.get('lastName')?.hasError('minlength')) {
+      <mat-error>LastName length should be minimum <strong>3</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Phone Number</mat-label>
+    <input matInput placeholder="Eg: 1234567890" formControlName="phoneNumber" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (userGroup.get('phoneNumber')?.hasError('required') && !userGroup.get('phoneNumber')?.hasError('pattern') ) {
+      <mat-error>Phone No is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (userGroup.get('phoneNumber')?.hasError('pattern')) {
+      <mat-error>Phone Number <strong>Invalid</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Eg: md@example.com" formControlName="email" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (userGroup.get('email')?.hasError('required') && !userGroup.get('email')?.hasError('pattern') ) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (userGroup.get('email')?.hasError('pattern')) {
+      <mat-error>Email is <strong>Invalid</strong></mat-error>
+    }
+  </mat-form-field>
+  <div>
+    <button mat-button (click)="onBack()">Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>
+

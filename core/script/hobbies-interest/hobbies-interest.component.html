@@ -1,0 +1,31 @@
+
+<form [formGroup]="hobbiesInterestGroup">
+  <mat-form-field>
+    <mat-label>Hobbies</mat-label>
+    <input matInput placeholder="Eg: Playing basketball , Cricket" formControlName="hobbies" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (hobbiesInterestGroup.get('hobbies')?.hasError('required') && !hobbiesInterestGroup.get('hobbies')?.hasError('minlength') ) {
+      <mat-error>hobbies is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (hobbiesInterestGroup.get('hobbies')?.hasError('minlength')) {
+      <mat-error>hobbies length should be minimum <strong>3</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field >
+    <mat-label>Interest</mat-label>
+    <input matInput placeholder="Eg: Hiking, Camping" formControlName="interest" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+    <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+    @if (hobbiesInterestGroup.get('interest')?.hasError('required') && !hobbiesInterestGroup.get('interest')?.hasError('minlength') ) {
+      <mat-error>interest is <strong>required</strong></mat-error>
+    }
+    <!-- if the validator is not minimum then it will run this -->
+    @if (hobbiesInterestGroup.get('interest')?.hasError('minlength')) {
+      <mat-error>interest length should be minimum <strong>3</strong></mat-error>
+    }
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>

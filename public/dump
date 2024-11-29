@@ -1,0 +1,24 @@
+  checking(){
+    savedAddressLine!: string;
+    savedAddressCountry!: string;
+    savedAddressCity!: string;
+    savedDetailFirstName!: string;
+    savedDetailLastName!: string;
+    savedDetailPhoneNo!: number;
+    savedDetailEmail!: string;
+    savedHobbies!: string;
+    savedInterest!: string;
+  
+    this.savedDetailFirstName = this.userDetailFormGroup.value.firstName;
+    this.savedDetailLastName = this.userDetailFormGroup.value.lastName;
+    this.savedDetailPhoneNo = this.userDetailFormGroup.value.phoneNumber;
+    this.savedDetailEmail = this.userDetailFormGroup.value.email;
+
+    this.savedAddressLine =  this.addressFormGroup.value.firstLine;
+    this.savedAddressCountry =  this.addressFormGroup.value.country;
+    this.savedAddressCity =  this.addressFormGroup.value.city;
+
+    this.savedHobbies =  this.hobbiesInterestFormGroup.value.hobbies;
+    this.savedInterest =  this.hobbiesInterestFormGroup.value.interest;
+
+  }

@@ -1,0 +1,52 @@
+<!-- this is for helping us to disable and activate linear button -->
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+
+<mat-stepper orientation="horizontal" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="userDetailFormGroup">
+        <!-- ng template only works in parent component  -->
+        <ng-template matStepLabel>Fill out the details </ng-template>
+        <!-- for child component to work linear mode the should have form in child component and it is working only in formbuilder-->
+         <!-- with input we are sending our data to parent component 
+          with @output we are getting the response in which we are having the old data back  -->
+        <app-user-detail [userGroup]="userDetailFormGroup" (back)="onBack()"></app-user-detail>
+    </mat-step>
+
+    <mat-step [stepControl]="addressFormGroup">
+        <ng-template matStepLabel>Fill out your Address</ng-template>
+        <app-address [addressGroup]="addressFormGroup"></app-address>
+    </mat-step>
+
+    <mat-step [stepControl]="hobbiesInterestFormGroup">
+        <ng-template matStepLabel>Fill out your Hobbies and Interest</ng-template>
+        <app-hobbies-interest [hobbiesInterestGroup]="hobbiesInterestFormGroup"></app-hobbies-interest>
+    </mat-step>
+
+    <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <h2>Preview: Details</h2>
+        <p>FirstName: {{ this.userDetailFormGroup.value.firstName }}</p>
+        <p>LastName: {{ this.userDetailFormGroup.value.lastName }}</p>
+        <p>Phone No: {{ this.userDetailFormGroup.value.phoneNumber }}</p>
+        <p>Email: {{ this.userDetailFormGroup.value.email }}</p>
+      <br><br>
+      <h2>Preview: Address</h2>
+        <p>Address Line: {{ this.addressFormGroup.value.firstLine }}</p>
+        <p>Country: {{ this.addressFormGroup.value.country }}</p>
+        <p>City: {{ this.addressFormGroup.value.city }}</p>
+      <br><br>
+      <h2>Preview: Hobbies & Interest</h2>
+        <p>Hobbies: {{ this.hobbiesInterestFormGroup.value.hobbies }}</p>
+        <p>Interest: {{ this.hobbiesInterestFormGroup.value.interest }}</p>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="onSubmit()">Save</button>
+      <button mat-button (click)="stepper.reset()">New Page</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+ 

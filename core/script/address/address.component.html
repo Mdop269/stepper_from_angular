@@ -1,0 +1,45 @@
+<form [formGroup]="addressGroup">
+    <mat-form-field>
+      <mat-label>address</mat-label>
+      <input matInput placeholder="Eg:  F 6, Apmc Market 2, Phase Ii, " formControlName="firstLine" [errorStateMatcher]="errorStateMatcherService.matcher" required>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addressGroup.get('firstLine')?.hasError('required') && !addressGroup.get('firstLine')?.hasError('minlength') ) {
+      <mat-error>Address is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addressGroup.get('firstLine')?.hasError('minlength')) {
+      <mat-error>address length should be minimum length <strong>10</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="country">
+        <mat-option value="Usa">Usa</mat-option>
+        <mat-option value="India">India</mat-option>
+        <mat-option value="China">China</mat-option>
+        <mat-option value="Japan">Japan</mat-option>
+
+        <!-- with this it will check if the category is choosen or not if it is then it will give the value -->
+      </mat-select>
+      @if (addressGroup.get('country')?.hasError('required')) {
+        <mat-error>Country is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city">
+        <mat-option value="Mumbai">Mumbai</mat-option>
+        <mat-option value="Pune">Pune</mat-option>
+        <mat-option value="Nagpur">Nagpur</mat-option>
+        <mat-option value="Nashik">Nashik</mat-option>
+        <!-- with this it will check if the category is choosen or not if it is then it will give the value -->
+      </mat-select>
+      @if (addressGroup.get('city')?.hasError('required')) {
+        <mat-error>City is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+    </div>
+</form>
