@@ -57,3 +57,12 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Tasks 
+1. create a main component of the stepper form with the angular stepper 
+2. in each stepper there should be another component so in our case it is 3 ( userdetail, address, hobbies and interest)
+3. we should have validation of the inputs like email address and lenght
+4. when we save the form it should show all the preview and yeah when we save ( its optional ) and click on new page we should have back button with which it should fetch all the data of the last entry and it should show it there 
+4. we should be able to show the data in angular table with the help of local storage and we should have delete and dialog action button 
+5. in the table we should only see the userdetail and the address and hobbies interest should be shown in the dialog 
